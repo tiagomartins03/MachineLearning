@@ -1,0 +1,15 @@
+#Como saber o valor ideal para o K?
+
+error = []
+
+for i in range(1,10):
+    knn = knc(n_neighbors=i)
+    knn.fit(x_train_escalonado, y_train)
+    pred_i = knn.predict(x_test_escalonado)
+    error.append(np.mean(pred_i != y_test))
+
+plt.figure(figsize=(12,6))
+plt.plot(range(1,10), error, color = 'red', linestyle = 'dashed', marker = 'o', markerfacecolor = 'blue', markersize = 10)
+plt.title('Erro médio para K')
+plt.ylabel('Valor de K')
+plt.xlabel('Error Médio')
